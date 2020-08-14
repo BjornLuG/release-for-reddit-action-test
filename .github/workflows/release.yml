@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: BjornLuG/release-for-reddit-action@v1
+    - uses: BjornLuG/release-for-reddit-action@master # master is used to test bleeding-edge, you should use tags like v1 instead
       with:
         username: ${{ secrets.REDDIT_USERNAME }}
         password: ${{ secrets.REDDIT_PASSWORD }}
@@ -19,3 +19,4 @@ jobs:
         flair-id: 6b39b4a6-be2f-11e8-ac14-0e2593696d0a
         flair-text: awesome
         comment: ${{ github.event.release.body }}
+        notification: true
