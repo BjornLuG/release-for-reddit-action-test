@@ -19,4 +19,4 @@ jobs:
         flair-id: 6b39b4a6-be2f-11e8-ac14-0e2593696d0a
         flair-text: awesome
         comment: ${{ github.event.release.body }}
-        notification: true
+        notification: false
