@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: BjornLuG/release-for-reddit-action@master # master is used to test bleeding-edge, you should use tags like v1 instead
+    - uses: bluwy/release-for-reddit-action@master # master is used to test bleeding-edge, you should use tags like v1 instead
+      id: reddit
       with:
         username: ${{ secrets.REDDIT_USERNAME }}
         password: ${{ secrets.REDDIT_PASSWORD }}
@@ -20,3 +21,12 @@ jobs:
         flair-text: awesome
         comment: ${{ github.event.release.body }}
         notification: false
+    - uses: bluwy/release-for-reddit-action@master
+      with:
+        username: ${{ secrets.REDDIT_USERNAME }}
+        password: ${{ secrets.REDDIT_PASSWORD }}
+        app-id: ${{ secrets.REDDIT_APP_ID }}
+        app-secret: ${{ secrets.REDDIT_APP_SECRET }}
+        subreddit: testingground4bots
+        title: Crosspost title
+        url: ${{ steps.reddit.outputs.postUrl }}
